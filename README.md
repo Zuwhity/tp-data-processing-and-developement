@@ -104,6 +104,7 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 4. Keep reading events from a topic from one terminal : https://kafka.apache.org/documentation/#quickstart_consume
 * try the default config
 * what does the `--from-beginning` config do ?
+*     If the consumer does not already have  an established offset to consume from, start with the earliest message present in the log rather than the latest message.
 * what about using the `--group` option for your producer ?
 6. stop reading
 7. Keep sending some messages to the topic
