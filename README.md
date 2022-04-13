@@ -46,11 +46,12 @@ Answer these questions with what you can find on the documentation :
     Producers are those client applications that publish (write) events to Kafka, and consumers are those that subscribe to (read and process) these events. In Kafka, producers and consumers are fully decoupled and agnostic of each other, which is a key design element to achieve the high scalability that Kafka is known for. 
 
 - What are consumer groups ?
-    
+    send a message to a certain group of people by their ID
 
 - What is a offset ?
 
 - Why using partitions ? 
+      we have a sort of conversation / discution with all the message around the topics.
 
 - Why using replication ?
 
@@ -106,15 +107,16 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 * what does the `--from-beginning` config do ?
 *     If the consumer does not already have  an established offset to consume from, start with the earliest message present in the log rather than the latest message.
 * what about using the `--group` option for your producer ?
+* The consumer group id of the consumer
 6. stop reading
 7. Keep sending some messages to the topic
 
 #### Partition 
 1. Check consumer group with `kafka-console-consumer` : https://kafka.apache.org/documentation/#basic_ops_consumer_group
 * notice if there is [lag](https://univalence.io/blog/articles/kafka-et-les-groupes-de-consommateurs/) for your group
-2. read from a new group, what happened ?
-3. read from a already existing group, what happened ?
-4. Recheck consumer group
+2. read from a new group, what happened ? there is not the old message print in the console , it's like a page mark for books
+3. read from a already existing group, what happened ? here we have some message in lag so it will show the message that are hide when we run this groups again 
+4. Recheck consumer group , we have now multiple group in our list and so it's a nice way share and split the code
 
 #### Replication - High Availability
 1. Increase replication in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
